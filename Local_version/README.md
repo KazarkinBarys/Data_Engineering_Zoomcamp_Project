@@ -1,6 +1,16 @@
 # Step-by-Step Guide for Data Engineering Zoomcamp Project (local version)
 
-This guide contains the instructions you need to follow to reproduce the project results.
+This guide contains the instructions you need to follow to reproduce the project results:
+
+[Step 0](https://github.com/kostoccka/Data_Engineering_Zoomcamp_Project/edit/main/Local_version/README.md#step-0---preparation) - Preparation
+
+[Step 1](https://github.com/kostoccka/Data_Engineering_Zoomcamp_Project/edit/main/Local_version/README.md#step-1---creating-postgresql-database-and-environment-docker) - Creating PostgreSQL database and environment (docker)
+
+[Step 2 and 3](https://github.com/kostoccka/Data_Engineering_Zoomcamp_Project/edit/main/Local_version/README.md#step-2-and-3---download-datasets-from-source-transform-it-and-upload-into-a-database-prefect--python) - Download datasets from source, transform it and upload into a database (prefect + python)
+
+[Step 4](https://github.com/kostoccka/Data_Engineering_Zoomcamp_Project/edit/main/Local_version/README.md#step-4---transformation-modeling-and-generalization-of-data-into-a-database-dbt) - Transformation, modeling and generalization of data into a database (dbt)
+
+[Step 5](https://github.com/kostoccka/Data_Engineering_Zoomcamp_Project/edit/main/Local_version/README.md#step-5---visualization-of-transformed-and-generalized-data-metabase) - Visualization of transformed and generalized data (metabase)
 
 ## Project architecture
 
@@ -130,7 +140,7 @@ Check new generalized tables in pgAdmin http://localhost:8080. They should be in
 
 ![alt text](https://github.com/kostoccka/Data_Engineering_Zoomcamp_Project/blob/main/images/Local/pgdmin_summ.png)
 
-## Step 5  Visualization of transformed and generalized data (metabase)
+## Step 5 - Visualization of transformed and generalized data (metabase)
 
 Open Metabase  http://localhost:3001 and setup connection to database:
 
