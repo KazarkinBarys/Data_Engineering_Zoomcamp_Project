@@ -1,0 +1,25 @@
+MVC_dbt:
+  outputs:
+
+    dev:
+      type: postgres
+      threads: 4
+      host: localhost
+      port: 5432
+      user: root
+      pass: root
+      dbname: MVC_db
+      schema: public
+
+    prod:
+      type: postgres
+      threads: 4
+      host: localhost
+      port: 5432
+      user: root
+      pass: root
+      dbname: MVC_db
+      schema: MVC_summarize
+
+  target: dev
+
