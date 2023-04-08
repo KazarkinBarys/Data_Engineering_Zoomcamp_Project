@@ -13,7 +13,13 @@ The period of the data processing will cover from 2012 to 2023.
 
 ## Problem description and purposes
 
-The project is related Motor Vehicle Collisions in New York and is based on data from 3 datasets. Need to analyze: what types of cars most often get into collisions, for what reasons collisions took place, at what time of the day accidents most often occur, the age and gender of the drivers involved in collisions. Also need to find out how complete the datasets are: how many cars, people and other data is unknown. For this purposes need to:
+The project is related Motor Vehicle Collisions in New York and is based on data from 3 datasets. 
+
+Need to analyze: what types of cars most often get into collisions, for what reasons collisions took place, at what time of the day accidents most often occur, the age and gender of the drivers involved in collisions. 
+
+Also need to find out how complete the datasets are: how many cars, people and other data is unknown. 
+
+For this purposes need to:
   * create database for store and processing the data;
   * create a data pipeline for extract raw data from a source, transform it and upload into database;
   * uploaded data must be partitioning on years;
@@ -22,7 +28,7 @@ The project is related Motor Vehicle Collisions in New York and is based on data
 
 ## Datasets used in the project
 
-[Motor Vehicle Collisions - Crashes](https://data.cityofnewyork.us/Public-Safety/Motor-Vehicle-Collisions-Crashes/h9gi-nx95) data shows information about each traffic crash event on city streets within the New York City.  Each row represents a crash event. The Motor Vehicle Collisions data tables contain information from all police reported motor vehicle collisions in NYC.
+[Motor Vehicle Collisions - Crashes](https://data.cityofnewyork.us/Public-Safety/Motor-Vehicle-Collisions-Crashes/h9gi-nx95) data shows information about each traffic crash event on city streets within the New York City.  Each row represents a crash event. The Motor Vehicle Collisions data tables contain information from all police reported motor vehicle collisions in NYC. The police report (MV104-AN) is required to be filled out for collisions where someone is injured or killed, or where there is at least $1000 worth of damage.
 
 [Motor Vehicle Collisions - Vehicles](https://data.cityofnewyork.us/Public-Safety/Motor-Vehicle-Collisions-Vehicles/bm4k-52h4) data contains details on each vehicle involved in the crash. Each row represents a motor vehicle involved in a crash. 
 
@@ -33,9 +39,9 @@ Data are shown as is from the electronic crash reporting system, excluding any p
 ## Technologies used
 
   * Containerization: Docker
-  * Data Warehouse: Postresql
-  * Data Orchestration: Prefect + Python
-  * Batch Processing: DBT
+  * Data Base: PostreSQL
+  * Batch Orchestration: Prefect + Python
+  * Data Transformation and Generalization : DBT
   * Visualisation: Metabase
 
 ## Project architecture
