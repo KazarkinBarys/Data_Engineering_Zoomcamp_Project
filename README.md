@@ -46,15 +46,15 @@ Data are shown as is from the electronic crash reporting system, excluding any p
 4. Transformation, modeling and generalization of data into a database (dbt)
 5. Visualization of transformed and generalized data (metabase)
 
-![alt text](https://github.com/kostoccka/Data-Engeneering-Zoomcamp-Project/blob/main/Local/images/local-batch-processing.png)
+![alt text](https://github.com/kostoccka/Data_Engineering_Zoomcamp_Project/blob/main/images/Local/local-batch-processing.png)
 
 ## Final Analytical Dashboard:
 
-![alt text](https://github.com/kostoccka/Data-Engineering-Zoomcamp-Project/blob/main/Local/images/metabase-dashboard_1.png)
-![alt text](https://github.com/kostoccka/Data-Engineering-Zoomcamp-Project/blob/main/Local/images/metabase-dashboard_2.png)
+![alt text](https://github.com/kostoccka/Data_Engineering_Zoomcamp_Project/blob/main/images/Local/metabase-dashboard_1.png)
+![alt text](https://github.com/kostoccka/Data_Engineering_Zoomcamp_Project/blob/main/images/Local/metabase-dashboard_2.png)
 
-## Tutorial
+## Step-by-Step Guide for Data Engineering Zoomcamp Project (local version)
 
-This tutorial contains the instructions you need to follow to reproduce the project results.
+This guide contains the instructions you need to follow to reproduce the project results.
 
-Follow instructions [here](https://github.com/kostoccka/Data-Engineering-Zoomcamp-Project/tree/main/Local)
+Follow instructions [here](https://github.com/kostoccka/Data_Engineering_Zoomcamp_Project/tree/main/Local_version)
