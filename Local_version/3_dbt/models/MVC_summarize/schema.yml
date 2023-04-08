@@ -1,0 +1,70 @@
+version: 2
+
+sources:
+  - name: MVC_C
+    database: MVC_db
+    schema: public
+    tables:
+      - name: MVC_C_2012
+      - name: MVC_C_2013
+      - name: MVC_C_2014
+      - name: MVC_C_2015
+      - name: MVC_C_2016
+      - name: MVC_C_2017
+      - name: MVC_C_2018
+      - name: MVC_C_2019
+      - name: MVC_C_2020
+      - name: MVC_C_2021
+      - name: MVC_C_2022
+      - name: MVC_C_2023
+  - name: MVC_V
+    database: MVC_db
+    schema: public
+    tables:
+      - name: MVC_V_2012
+      - name: MVC_V_2013
+      - name: MVC_V_2014
+      - name: MVC_V_2015
+      - name: MVC_V_2016
+      - name: MVC_V_2017
+      - name: MVC_V_2018
+      - name: MVC_V_2019
+      - name: MVC_V_2020
+      - name: MVC_V_2021
+      - name: MVC_V_2022
+      - name: MVC_V_2023
+  - name: MVC_P
+    database: MVC_db
+    schema: public
+    tables:
+      - name: MVC_P_2012
+      - name: MVC_P_2013
+      - name: MVC_P_2014
+      - name: MVC_P_2015
+      - name: MVC_P_2016
+      - name: MVC_P_2017
+      - name: MVC_P_2018
+      - name: MVC_P_2019
+      - name: MVC_P_2020
+      - name: MVC_P_2021
+      - name: MVC_P_2022
+      - name: MVC_P_2023
+      
+
+models:
+    - name: dataset_overview
+    - name: mvc_crashes_per_hour
+    - name: mvc_sum_2012
+    - name: mvc_sum_2013
+    - name: mvc_sum_2014
+    - name: mvc_sum_2015
+    - name: mvc_sum_2016
+    - name: mvc_sum_2017
+    - name: mvc_sum_2018
+    - name: mvc_sum_2019
+    - name: mvc_sum_2020
+    - name: mvc_sum_2021
+    - name: mvc_sum_2022
+    - name: mvc_sum_2023
+    - name: mvc_sum_all
+

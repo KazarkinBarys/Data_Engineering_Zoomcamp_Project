@@ -1,0 +1,51 @@
+###
+### A complete description of a Prefect Deployment for flow 'MVC_main'
+###
+name: MVC_flow
+description: "Select dataset for processing: \n 'C' for Motor Vehicle Collisions -\
+  \ Crashes \n'V' for Motor Vehicle Collisions - Vehicles \n'P' for Motor Vehicle\
+  \ Collisions - Person \nSelect years for partitioning and upload into database(separate\
+  \ table for each selected year). \nYears presented in the dataset: \n[2012, 2013,\
+  \ 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023] \nOr select 'check'\
+  \ for checking downloaded data into database. \nOr '[data_type] reload' for reloading\
+  \ dataset"
+version: a12825d475c16a3bd7d67d6a21dff5d5
+# The work queue that will handle this deployment's runs
+work_queue_name: default
+tags: []
+parameters: {}
+schedule: null
+infra_overrides: {}
+infrastructure:
+  type: process
+  env: {}
+  labels: {}
+  name: null
+  command: null
+  stream_output: true
+  working_dir: /mnt/c/dataengineering/zoomcamp/Data_Engineering_Zoomcamp_Project/Local_version/2_pipeline
+  block_type_slug: process
+  _block_type_slug: process
+
+###
+### DO NOT EDIT BELOW THIS LINE
+###
+flow_name: MVC_main
+manifest_path: null
+storage: null
+path: /mnt/c/dataengineering/zoomcamp/Data_Engineering_Zoomcamp_Project/Local_version/2_pipeline
+entrypoint: pipeline.py:MVC_main
+parameter_openapi_schema:
+  title: Parameters
+  type: object
+  properties:
+    data_type:
+      title: data_type
+      position: 0
+    years:
+      title: years
+      position: 1
+  required:
+  - data_type
+  - years
+  definitions: null
