@@ -59,13 +59,13 @@ Create prefect deployment file:
 ```
 prefect deployment build ./pipeline.py:MVC_main -n MVC_flow
 ```
-Make sure that "working_dir:" for download files in MVC_main-deployment.yaml file is not empty(same as "path:" string in MVC_main-deployment.yaml file).
+Open MVC_main-deployment.yaml file and make sure that "working_dir:" for download files is not empty (should be same as "path:" string in MVC_main-deployment.yaml file).
 
 Apply new deployment:
 ```
 prefect deployment apply MVC_main-deployment.yaml
 ```
-Go to http://127.0.0.1:4200/deployments and define parameters for downloading and processing data:
+Go to http://127.0.0.1:4200/deployments and edit parameters for downloading and processing data:
 
 ![alt text](https://github.com/kostoccka/Data_Engineering_Zoomcamp_Project/blob/main/images/Local/prefect_edit.png)
 
