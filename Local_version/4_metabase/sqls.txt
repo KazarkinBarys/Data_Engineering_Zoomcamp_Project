@@ -9,22 +9,26 @@ Motor Vehicle Collisions (2012-2023) New York City Dataset Overview
 SELECT "year", "no_vhc_data_%", "no_person_data_%",  "no_vhc_type_data_%", "no_age_data_%", "no_sex_data_%", "no_borough_data_%"
 FROM "MVC_summarize".mvc_dataset_overview
 )
+
 Vehicle Types involved in Crashes
 (
 SELECT vhc_type, SUM(vhc_type_am) AS amount
 FROM "MVC_summarize".mvc_sum_all GROUP BY vhc_type ORDER BY amount DESC
 )
+
 Contributing Factor
 (
 SELECT contr_f, SUM(contr_f_am) AS amount
 FROM "MVC_summarize".mvc_sum_all GROUP BY contr_f ORDER BY amount DESC
 )
+
 Gender of Drivers involved in Crashes
 (
 WITH tbl AS( SELECT CASE WHEN sex = 'M' THEN 'Male' WHEN sex = 'F' THEN 'Female'
 ELSE 'Unknown' end as gender, age, age_am  FROM "MVC_summarize".mvc_sum_all )
 SELECT gender, SUM(age_am) FROM tbl GROUP BY gender
 )
+
 MVC_crashes_per_month
 (
 SELECT concat("year",'-',TO_CHAR("month",'fm09')) AS "month", SUM(all_amount)AS all_amount,
@@ -34,11 +38,13 @@ WHERE "year" between 2016 and 2022
 GROUP BY concat("year",'-',TO_CHAR("month",'fm09')) 
 ORDER BY "month"
 )
+
 Age of Drivers involved in Crashes
 (
 SELECT "age", SUM(age_am) AS amount
 FROM "MVC_summarize".mvc_sum_all GROUP BY "age" ORDER BY amount DESC
 )
+
 MVC_crashes_per_hour
 (
 SELECT time_interval, AVG(all_amount), AVG(injured_am)
