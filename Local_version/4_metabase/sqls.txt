@@ -26,8 +26,7 @@ SELECT vhc_type_ AS vhc_type, SUM(vhc_type_am) AS vhc_type_am FROM (
 	ELSE vhc_type END AS vhc_type_, vhc_type_am
 	FROM "MVC_summarize".mvc_sum_all 
 	WHERE vhc_type IS NOT NULL) vhc_t 
- GROUP BY vhc_type_
-)
+ GROUP BY vhc_type_)
 SELECT vhc_type, SUM(vhc_type_am) AS amount
 FROM tbl GROUP BY vhc_type ORDER BY amount DESC
 )
