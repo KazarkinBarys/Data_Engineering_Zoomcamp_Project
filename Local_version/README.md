@@ -146,7 +146,7 @@ Open Metabase  http://localhost:3001 and setup connection to database:
 
 ![alt text](https://github.com/kostoccka/Data_Engineering_Zoomcamp_Project/blob/main/images/Local/metabase_connect.png)
 
-Create dashboard using sql queries from the sqls.txt file:
+Create dashboard using sql queries from the [sqls.txt](https://github.com/kostoccka/Data_Engineering_Zoomcamp_Project/blob/main/Local_version/4_metabase/sqls.txt) file:
 
 ![alt text](https://github.com/kostoccka/Data_Engineering_Zoomcamp_Project/blob/main/images/Local/metabase-dashboard_1.png)
 ![alt text](https://github.com/kostoccka/Data_Engineering_Zoomcamp_Project/blob/main/images/Local/metabase-dashboard_2.png)
