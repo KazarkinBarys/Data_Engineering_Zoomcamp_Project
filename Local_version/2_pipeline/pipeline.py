@@ -12,6 +12,7 @@ from prefect_sqlalchemy import SqlAlchemyConnector
 
 import pipeline_set
 
+
 @task(log_prints=True, tags=["download"])
 def download_data(data_type):
     if data_type == "check":
