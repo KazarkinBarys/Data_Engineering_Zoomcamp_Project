@@ -12,24 +12,25 @@ from prefect_sqlalchemy import SqlAlchemyConnector
 
 import pipeline_set
 
+
 @task(log_prints=True, tags=["download"])
 def download_data(data_type):
     if data_type == "check":
-        return("check")
+        return("check", data_type)
     elif data_type[:1] in ["C","V","P"] and data_type[1:] == " reload":
         data_type = data_type[:1]
         url = getattr(pipeline_set,f"url_{data_type}")
         csv_name = f"MVC_{data_type}.csv"
         os.system(f"wget {url} -O {csv_name}")
-        return(csv_name)
+        return(csv_name, data_type)
     elif data_type in ["C","V","P"]:
         url = getattr(pipeline_set,f"url_{data_type}")
         csv_name = f"MVC_{data_type}.csv"
         if os.path.isfile(csv_name) is not True:
             os.system(f"wget {url} -O {csv_name}")
-            return(csv_name)
+            return(csv_name, data_type)
         else:
-            return(csv_name)
+            return(csv_name, data_type)
     else:
         return("err")
 
@@ -165,7 +166,7 @@ Or select 'check' for checking downloaded data into database. \n\
 Or '[data_type] reload' for reloading dataset")
 def MVC_main(data_type, years):
 
-    csv_name = download_data(data_type)
+    csv_name, data_type = download_data(data_type)
 
     if  csv_name == "err":
         return(print("data_type error, please choose 'C','V','P' for data_type, 'check' for checking downloaded data into database, '[data_type] reload' for reloading dataset"))
