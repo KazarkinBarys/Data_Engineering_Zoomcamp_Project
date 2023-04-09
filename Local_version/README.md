@@ -94,7 +94,7 @@ Start prefect queue with name "default":
 ```
 prefect agent start  --work-queue "default"
 ```
-Data processing will start after uploading the CSV file. If the csv file was not completely downloaded, select data_type like "C reload"(example for "C") and try again. It will start downloading the csv file again.
+Data processing will start after uploading the CSV file. If the csv file was not completely downloaded, select data_type like "C reload"(example for "C" data type) and try again. It will start downloading the csv file with selected data type again.
 
 Go to http://127.0.0.1:4200/flow-runs and check logs of started flow. If everything is done correctly, information about the processed data should appear in the logs:
 
