@@ -23,7 +23,11 @@ For this purposes need to:
   * create database for store and processing the data;
   * create a data pipeline for extract raw data from a source, transform it and upload into database;
   * uploaded data must be partitioning on years;
-  * generalize data for analytics(for each year; for daytime(hourly); for missing data);
+  * generalize data for analytics:
+ 
+       - for each year; 
+       - for daytime(hourly); 
+       - for missing data.
   * creating a dashboard with generalized data.
 
 ## Datasets used in the project
