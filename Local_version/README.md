@@ -94,6 +94,10 @@ Start prefect queue with name "default":
 ```
 prefect agent start  --work-queue "default"
 ```
+Start quick run with selected parameters:
+
+![alt text](https://github.com/kostoccka/Data_Engineering_Zoomcamp_Project/blob/main/images/Local/prefect_qrun.png)
+
 Data processing will start after uploading the CSV file. If the csv file was not completely downloaded, select data_type like "C reload"(example for "C" data type) and try again. It will start downloading the csv file with selected data type again.
 
 Go to http://127.0.0.1:4200/flow-runs and check logs of started flow. If everything is done correctly, information about the processed data should appear in the logs:
@@ -104,7 +108,7 @@ After complete dataprocessing for all 3 datasets("C", "V" and "P"), set "check" 
 
 ![alt text](https://github.com/kostoccka/Data_Engineering_Zoomcamp_Project/blob/main/images/Local/prefect_check.png)
 
-Data in the report should be like this:
+The data in the report should look like this:
 
 ![alt text](https://github.com/kostoccka/Data_Engineering_Zoomcamp_Project/blob/main/images/Local/prefect_check_res.png)
 
