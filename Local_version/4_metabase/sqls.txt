@@ -12,8 +12,24 @@ FROM "MVC_summarize".mvc_dataset_overview
 
 Vehicle Types involved in Crashes
 (
+with tbl AS(
+SELECT vhc_type_ AS vhc_type, SUM(vhc_type_am) AS vhc_type_am FROM (
+	SELECT CASE
+	WHEN lower(vhc_type) LIKE 'passenger%' THEN 'Passenger Vehicle'
+	when lower(vhc_type) LIKE '%sport utility%' THEN 'Sport Utility / Station Wagon'
+	when lower(vhc_type) LIKE 'taxi%' THEN 'Taxi'
+	when lower(vhc_type) LIKE 'pick%' THEN 'Pick-up Truck'
+	when lower(vhc_type) LIKE 'bus%' THEN 'Bus'
+	when lower(vhc_type) LIKE 'van%' THEN 'Van'
+	when lower(vhc_type) LIKE 'unkno%' THEN 'Unknown'
+	when lower(vhc_type) LIKE 'other%' THEN 'Unknown'
+	ELSE vhc_type END AS vhc_type_, vhc_type_am
+	FROM "MVC_summarize".mvc_sum_all 
+	WHERE vhc_type IS NOT NULL) vhc_t 
+ GROUP BY vhc_type_
+)
 SELECT vhc_type, SUM(vhc_type_am) AS amount
-FROM "MVC_summarize".mvc_sum_all GROUP BY vhc_type ORDER BY amount DESC
+FROM tbl GROUP BY vhc_type ORDER BY amount DESC
 )
 
 Contributing Factor
