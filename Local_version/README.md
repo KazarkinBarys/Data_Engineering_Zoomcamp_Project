@@ -157,7 +157,7 @@ pip install metabase
 pip install metabase-api
 ```
 
-Go to http://127.0.0.1:4200/deployments and edit parameters for creating dashboard cards in metabase:
+Go to http://127.0.0.1:4200/deployments and edit parameters for creating dashboard cards in metabase(login and password from metabase):
 
 ```
 "metabase"
@@ -169,8 +169,11 @@ The flow output should look like this:
 
 ![alt text](https://github.com/kostoccka/Data_Engineering_Zoomcamp_Project/blob/main/images/Local/prefect_metabase_output.png)
 
-Select dataset for download:
-Create dashboard using sql queries from the [sqls.txt](https://github.com/kostoccka/Data_Engineering_Zoomcamp_Project/blob/main/Local_version/4_metabase/sqls.txt) file:
+Go to metabase http://localhost:3001/ and check MVC_collection:
+
+![alt text](https://github.com/kostoccka/Data_Engineering_Zoomcamp_Project/blob/main/images/Local/metabase_collection.png)
+
+Create dashboard and put MVC_collection cards into it or use sql queries from the [sqls.txt](https://github.com/kostoccka/Data_Engineering_Zoomcamp_Project/blob/main/Local_version/4_metabase/sqls.txt) file to recreate dasdhboard manually:
 
 ![alt text](https://github.com/kostoccka/Data_Engineering_Zoomcamp_Project/blob/main/images/Local/metabase-dashboard_1.png)
 ![alt text](https://github.com/kostoccka/Data_Engineering_Zoomcamp_Project/blob/main/images/Local/metabase-dashboard_2.png)
