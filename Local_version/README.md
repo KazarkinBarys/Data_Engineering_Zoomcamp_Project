@@ -146,10 +146,30 @@ Check new generalized tables in pgAdmin http://localhost:8080. They should be in
 
 ## Step 5 - Visualization of transformed and generalized data (metabase)
 
-Open Metabase  http://localhost:3001 and setup connection to database:
+Open Metabase  http://localhost:3001 set login, password and setup connection to database (set database name: "MVC_db"):
 
 ![alt text](https://github.com/kostoccka/Data_Engineering_Zoomcamp_Project/blob/main/images/Local/metabase_connect.png)
 
+For creating dashboard cards with script metabase should be installed:
+
+```
+pip install metabase
+pip install metabase-api
+```
+
+Go to http://127.0.0.1:4200/deployments and edit parameters for creating dashboard cards in metabase:
+
+```
+"metabase"
+```
+
+![alt text](https://github.com/kostoccka/Data_Engineering_Zoomcamp_Project/blob/main/images/Local/prefect_metabase_params.png)
+
+The flow output should look like this:
+
+![alt text](https://github.com/kostoccka/Data_Engineering_Zoomcamp_Project/blob/main/images/Local/prefect_metabase_output.png)
+
+Select dataset for download:
 Create dashboard using sql queries from the [sqls.txt](https://github.com/kostoccka/Data_Engineering_Zoomcamp_Project/blob/main/Local_version/4_metabase/sqls.txt) file:
 
 ![alt text](https://github.com/kostoccka/Data_Engineering_Zoomcamp_Project/blob/main/images/Local/metabase-dashboard_1.png)
