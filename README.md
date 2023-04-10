@@ -28,7 +28,8 @@ For this purposes need to:
        - for each year; 
        - for daytime(hourly); 
        - for missing data;
-  * creating a dashboard with generalized data.
+  * creating a dashboard with generalized data;
+  * create a script for creating dashboard automatically.
 
 ## Datasets used in the project
 
