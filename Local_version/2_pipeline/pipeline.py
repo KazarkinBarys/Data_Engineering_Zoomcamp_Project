@@ -10,6 +10,10 @@ from prefect import flow, task
 from prefect.tasks import task_input_hash
 from prefect_sqlalchemy import SqlAlchemyConnector
 
+import pprint
+from metabase import Metabase
+from metabase_api import Metabase_API
+
 import pipeline_set
 
 
@@ -17,6 +21,8 @@ import pipeline_set
 def download_data(data_type):
     if data_type == "check":
         return("check", data_type)
+    elif data_type == "metabase":
+        return("metabase", data_type)
     elif data_type[:1] in ["C","V","P"] and data_type[1:] == " reload":
         data_type = data_type[:1]
         url = getattr(pipeline_set,f"url_{data_type}")
@@ -153,6 +159,53 @@ def check_downloaded_data():
     st = st + '\n' + 'total'.rjust(11) + str("{:,}".format(C)).rjust(11) + str("{:,}".format(V)).rjust(11) + str("{:,}".format(P)).rjust(11)
     print(st)
     
+@task(log_prints=True, tags=["download templates into Metabase"])
+def metabase(years):
+    #connection creation
+    mblogin = years[0]
+    mbpass = years[1]
+    try:
+        mb = Metabase_API('http://localhost:3001/', mblogin, mbpass)
+        print("connection ok")
+    except:
+        print("connection failed")
+        return()
+    
+    #collection creation
+    try:
+        colid = mb.get_item_id('collection', "MVC_collection")
+        print("collection 'MVC_collection' exists")
+    except:
+        mb.create_collection("MVC_collection", parent_collection_name='Root', return_results=False)
+        print("collection 'MVC_collection' created")
+        colid = mb.get_item_id('collection', "MVC_collection")
+
+    #checking database
+    try:
+        dbid = mb.get_item_id('database', "MVC_db")
+        print("database ok")
+    except:
+        print("MVC_db not found:connect or rename database")
+        return()
+
+    #cards creation
+    crd_names = pipeline_set.crd_names
+    for i in crd_names:
+        crd = i
+        crd['dataset_query']['database'] = dbid
+        crdnm = crd['name']
+        try: 
+            crdid = mb.get_item_id('card', crdnm)
+        except: 
+            crdid = -1
+        if crdid == -1:
+            mb.create_card(custom_json = crd, collection_id = colid)
+            print(f"card {crdnm} created")
+        else:
+            mb.delete_item('card', item_name = crdnm, collection_name = "MVC_collection", collection_id=colid, verbose=False)
+            mb.create_card(custom_json = crd, collection_id = colid)
+            print(f"card {crdnm} overwrited")
+
 
 
 @flow(name="MVC_main", log_prints=True, description = "Select dataset for processing: \n \
@@ -172,6 +225,8 @@ def MVC_main(data_type, years):
         return(print("data_type error, please choose 'C','V','P' for data_type, 'check' for checking downloaded data into database, '[data_type] reload' for reloading dataset"))
     elif csv_name == "check":
         check_downloaded_data()
+    elif csv_name == "metabase":
+        metabase(years)
     else: 
         engine  = create_tables(csv_name,years,data_type)
         transform_and_load(years,csv_name,engine,data_type)
