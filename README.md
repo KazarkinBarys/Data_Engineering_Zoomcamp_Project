@@ -28,7 +28,7 @@ For this purposes need to:
        - for each year; 
        - for daytime(hourly); 
        - for missing data;
-  * creating a dashboard with generalized data;
+  * create a dashboard with generalized data;
   * create a script for creating dashboard automatically.
 
 ## Datasets used in the project
@@ -52,7 +52,7 @@ Data are shown as is from the electronic crash reporting system, excluding any p
 ## Project architecture
 
 1. Creating PostgreSQL database and environment (docker)
-2. Download datasets from source (prefect + python)
+2. Downloading datasets from source (prefect + python)
 3. Transformation and loading data into the database (prefect + python)
 4. Transformation, modeling and generalization of data into a database (dbt)
 5. Visualization of transformed and generalized data (metabase)
