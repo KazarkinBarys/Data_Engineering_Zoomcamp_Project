@@ -157,7 +157,7 @@ pip install metabase
 pip install metabase-api
 ```
 
-Go to http://127.0.0.1:4200/deployments and edit parameters for creating dashboard cards in metabase(login and password from metabase):
+Go to http://127.0.0.1:4200/deployments and edit parameters for creating dashboard cards in metabase(data_type = "metabase", years = [login, password] from metabase):
 
 ```
 "metabase"
