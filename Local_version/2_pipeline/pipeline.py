@@ -195,7 +195,7 @@ def metabase(years):
         crd['dataset_query']['database'] = dbid
         crdnm = crd['name']
         try: 
-            crdid = mb.get_item_id('card', crdnm)
+            crdid = mb.get_item_id('card', crdnm, collection_name = "MVC_collection", collection_id=colid)
         except: 
             crdid = -1
         if crdid == -1:
