@@ -146,7 +146,7 @@ Check new generalized tables in pgAdmin http://localhost:8080. They should be in
 
 ## Step 5 - Visualization of transformed and generalized data (metabase)
 
-Open Metabase  http://localhost:3001 set login, password and setup connection to database (set database name: "MVC_db"):
+Open Metabase  http://localhost:3001 set login, password for metabase and setup connection to database (set database name: "MVC_db"):
 
 ![alt text](https://github.com/kostoccka/Data_Engineering_Zoomcamp_Project/blob/main/images/Local/metabase_connect.png)
 
