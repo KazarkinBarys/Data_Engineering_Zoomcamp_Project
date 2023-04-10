@@ -159,9 +159,6 @@ pip install metabase-api
 
 Go to http://127.0.0.1:4200/deployments and edit parameters for creating dashboard cards in metabase(data_type = "metabase", years = [login, password] from metabase):
 
-```
-"metabase"
-```
 
 ![alt text](https://github.com/kostoccka/Data_Engineering_Zoomcamp_Project/blob/main/images/Local/prefect_metabase_params.png)
 
