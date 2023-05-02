@@ -1,0 +1,87 @@
+Motor Vehicle Collisions (2012-2023) New York City
+(
+SELECT  SUM(total_crashes_am) AS "Total Crashes", 
+        SUM(total_vhc_am) AS "Total Vehicles involved in Crashes", 
+        SUM(total_person_am)  AS "Total Persons involved in Crashes"
+FROM "MVC_summarize".mvc_dataset_overview'
+)
+
+Motor Vehicle Collisions (2012-2023) New York City Dataset Overview
+(
+SELECT "year", 
+        "no_vhc_data_%" AS "No Vhc Data %", 
+        "no_person_data_%" AS "No Person Data %",  
+        "no_vhc_type_data_%" AS "No Vhc Type Data %", 
+        "no_age_data_%" AS "No Age Data %", 
+        "no_sex_data_%" AS "No Sex Data %", 
+        "no_borough_data_%" AS "No Borough Data 
+FROM "MVC_summarize".mvc_dataset_overview'
+)
+
+Vehicle Types involved in Crashes
+(
+with tbl AS(
+    SELECT vhc_type_ AS vhc_type, 
+    SUM(vhc_type_am) AS vhc_type_am 
+        FROM (  SELECT CASE 
+                    WHEN lower(vhc_type) LIKE 'passenger%' THEN 'Passenger Vehicle'
+                    when lower(vhc_type) LIKE '%sport utility%' THEN 'Sport Utility / Station Wagon'
+                    when lower(vhc_type) LIKE 'taxi%' THEN 'Taxi'
+                    when lower(vhc_type) LIKE 'pick%' THEN 'Pick-up Truck'
+                    when lower(vhc_type) LIKE 'bus%' THEN 'Bus'
+                    when lower(vhc_type) LIKE 'van%' THEN 'Van'
+                    when lower(vhc_type) LIKE 'unkno%' THEN 'Unknown'
+                    when lower(vhc_type) LIKE 'other%' THEN 'Unknown'
+                    ELSE vhc_type END AS vhc_type_ , vhc_type_am
+                FROM "MVC_summarize".mvc_sum_all 
+                WHERE vhc_type IS NOT NULL) vhc_t  
+    GROUP BY vhc_type_)
+SELECT vhc_type AS "Vehicle Types involved in Crashes", 
+SUM(vhc_type_am) AS amount
+FROM tbl 
+GROUP BY vhc_type 
+ORDER BY amount DESC
+)
+
+Contributing Factor
+(
+SELECT contr_f AS "Contributing Factor", 
+        SUM(contr_f_am) AS amount
+FROM "MVC_summarize".mvc_sum_all 
+GROUP BY contr_f 
+ORDER BY amount DESC
+)
+
+Gender of Drivers involved in Crashes
+(
+WITH tbl AS( 
+    SELECT CASE WHEN sex = 'M' THEN 'Male' 
+    WHEN sex = 'F' THEN 'Female' ELSE 'Unknown' end as gender, 
+    age, age_am  FROM "MVC_summarize".mvc_sum_all)
+SELECT gender AS "Gender of Drivers involved in Crashes", 
+SUM(age_am) FROM tbl GROUP BY gender
+)
+
+MVC_crashes_per_month
+(
+SELECT * 
+FROM "MVC_summarize".mvc_crashes_per_month 
+WHERE "month" between 2016 and 2022',
+)
+
+Age of Drivers involved in Crashes
+(
+SELECT "age" AS "Age of Drivers involved in Crashes", 
+    SUM(age_am) AS amount
+FROM "MVC_summarize".mvc_sum_all 
+GROUP BY "age" ORDER BY amount DESC
+)
+
+MVC_crashes_per_hour
+(
+SELECT time_interval AS "Time Interval", 
+    AVG(all_amount) AS "Average of all crashes", 
+    AVG(injured_am) AS "Average of crashes with injuries"
+FROM "MVC_summarize".mvc_crashes_per_hour 
+GROUP BY time_interval ORDER BY "Time Interval"
+)

@@ -1,0 +1,12 @@
+zoomcamp:
+  outputs:
+    dev:
+      dbname: zoomcamp-db
+      host: zoomcamp-wrgr.[numbers].us-east-1.redshift-serverless.amazonaws.com
+      password: pswrd
+      port: 5439
+      schema: public
+      threads: 4
+      type: redshift
+      user: zoomcamp-db-user
+  target: dev

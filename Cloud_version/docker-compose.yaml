@@ -1,0 +1,25 @@
+services:
+  prefectest:
+    image: zoomcamp
+    ports:
+      - "4200:4200"
+    volumes:
+      - "/home/ubuntu/Cloud_version:/Cloud_version:rw"
+    entrypoint:
+      - /bin/bash
+    networks:
+      - metanet1
+    tty: true
+
+  metabase-app:
+    image: metabase/metabase
+    ports:
+      - 3000:3000
+    volumes:
+      - "/home/ubuntu/Cloud_version:/Cloud_version:rw"
+    networks:
+      - metanet1
+
+networks:
+  metanet1:
+    driver: bridge

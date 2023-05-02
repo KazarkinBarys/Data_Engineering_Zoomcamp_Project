@@ -1,0 +1,4 @@
+1 - copy
+2 -install docker
+3 - create image :docker build  -t zoomcamp .
+4 - run docker-compose

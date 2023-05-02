@@ -1,0 +1,16 @@
+
+
+prefect deployment build ./pipeline.py:MVC_main -n MVC_flow
+prefect deployment apply MVC_main-deployment.yaml
+
+prefect deployment build ./metabase.py:metabase -n Metabase_flow
+prefect deployment apply metabase-deployment.yaml
+
+prefect agent start  --work-queue "default"
+
+prefect config set PREFECT_ORION_UI_API_URL="http://18.206.207.252:4200/api"
+prefect config set PREFECT_ORION_UI_API_URL="http://localhost:4200/api"
+
+prefect orion start --host 0.0.0.0
+
+docker inspect   -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' 7ca9db5f291a

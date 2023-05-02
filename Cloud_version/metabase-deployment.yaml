@@ -1,0 +1,47 @@
+###
+### A complete description of a Prefect Deployment for flow 'metabase_flow'
+###
+name: Metabase_flow
+description: "Input metabase login and password\n       example:[\"admin@admin.com\"\
+  , \"root123root\"] \n      Optionally input also ip of metabase container \n   \
+  \   example:[\"admin@admin.com\", \"root123root\", \"http://172.21.0.2:3000/\"]"
+version: 8735f2c9181120d068cb9b7ab5df249c
+# The work queue that will handle this deployment's runs
+work_queue_name: default
+work_pool_name: null
+tags: []
+parameters:
+  metabase_credentials: ["admin@admin.com", "root123root"]
+schedule: null
+is_schedule_active: null
+infra_overrides: {}
+infrastructure:
+  type: process
+  env: {}
+  labels: {}
+  name: null
+  command: null
+  stream_output: true
+  working_dir: /Cloud_version/4_metabase
+  block_type_slug: process
+  _block_type_slug: process
+
+###
+### DO NOT EDIT BELOW THIS LINE
+###
+flow_name: metabase_flow
+manifest_path: null
+storage: null
+path: /Cloud_version/4_metabase
+entrypoint: metabase.py:metabase
+parameter_openapi_schema:
+  title: Parameters
+  type: object
+  properties:
+    metabase_credentials:
+      title: metabase_credentials
+      position: 0
+  required:
+  - metabase_credentials
+  definitions: null
+timestamp: '2023-04-26T15:31:27.076511+00:00'

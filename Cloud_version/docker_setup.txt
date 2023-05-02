@@ -1,0 +1,37 @@
+#1 - install docker
+sudo apt update
+sudo apt install apt-transport-https ca-certificates curl software-properties-common
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
+apt-cache policy docker-ce
+sudo apt install docker-ce
+sudo systemctl status docker
+
+#2 - add docker in group
+sudo groupadd -f docker
+sudo usermod -aG docker $USER
+newgrp docker
+groups
+
+#3 - install docker-compose
+mkdir -p ~/.docker/cli-plugins/
+curl -SL https://github.com/docker/compose/releases/download/v2.5.0/docker-compose-linux-x86_64 -o ~/.docker/cli-plugins/docker-compose
+chmod +x ~/.docker/cli-plugins/docker-compose
+docker compose version
+
+#4 - build docker IMAGE
+docker build  -t zoomcamp .
+
+#5 - go inside docker-container
+docker ps
+docker exec -it [CONTAINER ID] /bin/bash
+
+#6 - apply deployments
+prefect deployment apply MVC_main-deployment.yaml
+prefect deployment apply metabase-deployment.yaml
+
+#7 - start prefect orion and agent
+prefect orion start --host 0.0.0.0
+prefect agent start  --work-queue "default"
+
+

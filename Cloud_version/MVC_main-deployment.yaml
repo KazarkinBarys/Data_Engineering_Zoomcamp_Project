@@ -1,0 +1,57 @@
+###
+### A complete description of a Prefect Deployment for flow 'MVC_main'
+###
+name: MVC_flow
+description: "Select dataset for processing: \n 'C' for Motor Vehicle Collisions -\
+  \ Crashes \n'V' for Motor Vehicle Collisions - Vehicles \n'P' for Motor Vehicle\
+  \ Collisions - Person \nSelect years for partitioning and upload into database(separate\
+  \ table for each selected year). \nYears presented in the dataset: \n[2012, 2013,\
+  \ 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023] \nOr select 'check'\
+  \ for checking downloaded data into database. \nOr '[data_type] reload' for reloading\
+  \ dataset \nOr 'upload_to_s3' for upload all parquet files to s3 \nOr 'redshift_tables [data_type]'\
+  \ for upload selected data from s3 paruet files to redshift \nOr 'dbt' for run dbt models"
+version: ec8254ef97a1556086d4697fdb6421b5
+# The work queue that will handle this deployment's runs
+work_queue_name: default
+work_pool_name: null
+tags: []
+parameters:
+  data_type: C
+  years: [2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023]
+schedule: null
+is_schedule_active: null
+infra_overrides: {}
+infrastructure:
+  type: process
+  env: {}
+  labels: {}
+  name: null
+  command: null
+  stream_output: true
+  working_dir: /Cloud_version/2_pipeline
+  block_type_slug: process
+  _block_type_slug: process
+
+###
+### DO NOT EDIT BELOW THIS LINE
+###
+flow_name: MVC_main
+manifest_path: null
+storage: null
+path: /Cloud_version/2_pipeline
+entrypoint: pipeline.py:MVC_main
+parameter_openapi_schema:
+  title: Parameters
+  type: object
+  properties:
+    data_type:
+      title: data_type
+      position: 0
+    years:
+      title: years
+      position: 1
+  required:
+  - data_type
+  - years
+  definitions: null
+timestamp: '2023-04-26T15:28:15.282388+00:00'
