@@ -88,7 +88,7 @@ prefect agent start  --work-queue "default"
 ```
 ![alt text](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/blob/main/images/Cloud/5_prefect_agent_start.jpg)
 
-Go to localhost:4200 and set the block with AWS credentials:
+Go to http://localhost:4200/blocks/catalog and set the block with AWS credentials:
 
 ![alt text](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/blob/main/images/Cloud/6_prefect_aws_block.jpg)
 
