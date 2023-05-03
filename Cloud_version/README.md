@@ -4,11 +4,11 @@ This guide contains the instructions you need to follow to reproduce the project
 
 [Step 0](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/tree/main/Cloud_version#step-0---preparation) - Preparation
 
-[Step 1](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/tree/main/Cloud_version#step-1---creating-cloud-infrastructure-on-aws---ec2-s3-bucket-redshift-serverless-cluster-terraform) - creating cloud infrastructure on AWS - EC2, S3 bucket, RedShift serverless cluster (terraform)
+[Step 1](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/tree/main/Cloud_version#step-1---creating-cloud-infrastructure-on-aws---ec2-s3-bucket-redshift-serverless-cluster-terraform) - Creating cloud infrastructure on AWS - EC2, S3 bucket, RedShift serverless cluster (terraform)
 
-[Step 2](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/tree/main/Cloud_version#step-2---installing-docker-and-run-containers-on-aws-ec2-instance-docker) - installing docker and run containers on AWS EC2 instance (docker)
+[Step 2](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/tree/main/Cloud_version#step-2---installing-docker-and-run-containers-on-aws-ec2-instance-docker) - Installing docker and run containers on AWS EC2 instance (docker)
 
-[Step 3,4,5 and 6](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/tree/main/Cloud_version#step-345-and-6---run-prefect-flows-to-download-datasets-from-source-transform-it-with-spark-upload-into-a-s3-and-from-s3-to-redshift-prefect-python-spark) - run prefect flows to download datasets from source, transform it with spark, upload into a S3, and from S3 to RedShift (prefect, python, spark)
+[Step 3,4,5 and 6](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/tree/main/Cloud_version#step-345-and-6---run-prefect-flows-to-download-datasets-from-source-transform-it-with-spark-upload-into-a-s3-and-from-s3-to-redshift-prefect-python-spark) - Run prefect flows to download datasets from source, transform it with spark, upload into a S3, and from S3 to RedShift (prefect, python, spark)
 
 [Step 7](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/tree/main/Cloud_version#step-7---transformation-modeling-and-generalization-data-in-the-redshift-dbt) - Transformation, modeling and generalization data in the RedShift (dbt)
 
@@ -142,7 +142,7 @@ Make sure via RedShift QueryTool, that all needed data was ingested in database(
 ![alt text](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/blob/main/images/Cloud/14_qcheck_redshift_prefect_run.jpg)
 
 
-## Step 7 - Transformation, modeling and generalization data in the RedShift (dbt)
+## Step 7 - transformation, modeling and generalization data in the RedShift (dbt)
 
 Add info(host and password) to profiles.yml file(in 3_dbt folder).
 Host u can check on AWS Redshift Workgroup configuration(endpoint):
@@ -157,7 +157,7 @@ Check new generalized tables via RedShift QueryTool. They should be in the "MVC_
 
 ![alt text](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/blob/main/images/Cloud/17_dbt_run_redshift_prefect_run.jpg)
 
-## Step 8 and 9 - Visualization of transformed and generalized data (metabase)
+## Step 8 and 9 - visualization of transformed and generalized data (metabase)
 
 Open Metabase  http://localhost:3000, set login, password for metabase and setup connection to RedShift (set database name: "MVC_db"):
 
