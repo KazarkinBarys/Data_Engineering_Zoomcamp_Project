@@ -24,7 +24,7 @@ The period of the data processing will cover from 2012 to 2023.
 
 Data are shown as is from the electronic crash reporting system, excluding any personally identifiable information.
 
-## Problem description and purposes in Cloud version
+## Problem description and purposes
 
 The project is related Motor Vehicle Collisions in New York and is based on data from 3 datasets. 
 
@@ -58,33 +58,28 @@ For realize this purposes in cloud version need to:
 
 ## Project architecture (Cloud version)
 
-1. Creating PostgreSQL database and environment (docker)
-2. Downloading datasets from source (prefect + python)
-3. Transformation and loading data into the database (prefect + python)
-4. Transformation, modeling and generalization of data into a database (dbt)
-5. Visualization of transformed and generalized data (metabase)
+1. Creating Cloud infrastructure: EC2, S3 bucket, Redshift cluster (Terraform)
+2. Containerization: Creating containers with the necessary tools: python, prefect, spark, metabase, etc (docker)
+3. Downloading datasets from source (prefect + python)
+4. Primary data transformation and saving it into parquet files (spark)
+5. Uploading parquet files into the datalake S3 (prefect + python)
+6. Creating tables and uploaded data into them from S3 (prefect + python)
+7. Transformation, modeling and generalization of data into a database (dbt)
+8. Creation dashboard template and filling it with data from datawarehouse (metabaseApi + python)
+9. Visualization of transformed and generalized data (metabase)
 
-![alt text](https://github.com/kostoccka/Data_Engineering_Zoomcamp_Project/blob/main/images/Local/local-batch-processing.png)
+![alt text](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/blob/main/images/Cloud/image.png)
 
 ## Final Analytical Dashboard:
 
-![alt text](https://github.com/kostoccka/Data_Engineering_Zoomcamp_Project/blob/main/images/Local/metabase-dashboard_1.png)
-![alt text](https://github.com/kostoccka/Data_Engineering_Zoomcamp_Project/blob/main/images/Local/metabase-dashboard_2.png)
+![alt text](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/blob/main/images/Cloud/26_metabase_dashboard_1.jpg)
+![alt text](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/blob/main/images/Cloud/26_metabase_dashboard_2.jpg)
 
-## Step-by-Step Guide for Data Engineering Zoomcamp Project (local version)
+## Step-by-Step Guide for Data Engineering Zoomcamp Project (Cloud version)
 
+This guide contains the instructions you need to follow to reproduce the project results.
 
-For realize this purposes in local version need to:
-  * create database for store and processing the data;
-  * create a data pipeline for extract raw data from a source, transform it and upload into database;
-  * uploaded data must be partitioning on years;
-  * generalize data for analytics:
- 
-       - for each year; 
-       - for daytime(hourly); 
-       - for missing data;
-  * create a dashboard with generalized data;
-  * create a script for creating dashboard automatically.
+Follow instructions [here](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/tree/main/Cloud_version)
 
 ## Technologies used in Local version
 
@@ -94,10 +89,7 @@ For realize this purposes in local version need to:
   * Data Transformation and Generalization : DBT
   * Visualisation: Metabase
 
-
-
-
-## Project architecture (Cloud version)
+## Project architecture (Local version)
 
 1. Creating PostgreSQL database and environment (docker)
 2. Downloading datasets from source (prefect + python)
@@ -105,15 +97,11 @@ For realize this purposes in local version need to:
 4. Transformation, modeling and generalization of data into a database (dbt)
 5. Visualization of transformed and generalized data (metabase)
 
-![alt text](https://github.com/kostoccka/Data_Engineering_Zoomcamp_Project/blob/main/images/Local/local-batch-processing.png)
+![alt text](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/blob/main/images/Local/local-batch-processing.png)
 
-## Final Analytical Dashboard:
 
-![alt text](https://github.com/kostoccka/Data_Engineering_Zoomcamp_Project/blob/main/images/Local/metabase-dashboard_1.png)
-![alt text](https://github.com/kostoccka/Data_Engineering_Zoomcamp_Project/blob/main/images/Local/metabase-dashboard_2.png)
-
-## Step-by-Step Guide for Data Engineering Zoomcamp Project (local version)
+## Step-by-Step Guide for Data Engineering Zoomcamp Project (Local version)
 
 This guide contains the instructions you need to follow to reproduce the project results.
 
-Follow instructions [here](https://github.com/kostoccka/Data_Engineering_Zoomcamp_Project/tree/main/Local_version)
+Follow instructions [here](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/tree/main/Local_version)
