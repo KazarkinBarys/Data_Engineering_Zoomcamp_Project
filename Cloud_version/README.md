@@ -2,15 +2,18 @@
 
 This guide contains the instructions you need to follow to reproduce the project results:
 
-[Step 0](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/blob/main/Local_version/README.md#step-0---preparation) - Preparation
+[Step 0](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/tree/main/Cloud_version#step-0---preparation) - Preparation
 
-[Step 1](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/blob/main/Local_version/README.md#step-1---creating-postgresql-database-and-environment-docker) - Creating PostgreSQL database and environment (docker)
+[Step 1](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/tree/main/Cloud_version#step-1---creating-cloud-infrastructure-on-aws---ec2-s3-bucket-redshift-serverless-clusterterraform) - creating cloud infrastructure on AWS - EC2, S3 bucket, RedShift serverless cluster (terraform)
 
-[Step 2 and 3](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/blob/main/Local_version/README.md#step-2-and-3---download-datasets-from-source-transform-it-and-upload-into-a-database-prefect--python) - Download datasets from source, transform it and upload into a database (prefect + python)
+[Step 2](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/tree/main/Cloud_version#step-2---installing-docker-and-run-containers-on-aws-ec2-instance) - installing docker and run containers on AWS EC2 instance (docker)
 
-[Step 4](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/blob/main/Local_version/README.md#step-4---transformation-modeling-and-generalization-of-data-into-a-database-dbt) - Transformation, modeling and generalization of data into a database (dbt)
+[Step 3,4,5 and 6](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/blob/main/Local_version/README.md#step-4---transformation-modeling-and-generalization-of-data-into-a-database-dbt) - run prefect flows to download datasets from source, transform it with spark, upload into a S3, and from S3 to RedShift (prefect, python, spark)
 
-[Step 5](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/blob/main/Local_version/README.md#step-5---visualization-of-transformed-and-generalized-data-metabase) - Visualization of transformed and generalized data (metabase)
+[Step 7](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/blob/main/Local_version/README.md#step-5---visualization-of-transformed-and-generalized-data-metabase) - Transformation, modeling and generalization data in the RedShift (dbt)
+
+[Step 8 and 9](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/blob/main/Local_version/README.md#step-5---visualization-of-transformed-and-generalized-data-metabase) - Visualization of transformed and generalized data (metabase)
+
 
 ## Project architecture
 
@@ -32,7 +35,7 @@ Need to be installed:
   * Visual Studio Code(or analogue)
   
   
-## Step 1 - creating cloud infrastructure on AWS - EC2, S3 bucket, RedShift serverless cluster(Terraform)
+## Step 1 - creating cloud infrastructure on AWS - EC2, S3 bucket, RedShift serverless cluster (terraform)
 Set variables in variables.tf file
 
 Run terraform commands:
@@ -43,7 +46,7 @@ terraform apply
 ```
 Check created AWS infrastructure - terraform must create EC2 instance, s3 bucket, RedShift serverless cluster and all necessary connections(subnets, security groups, internet gateways, etc)
 
-## Step 2 - installing docker and run containers on AWS EC2 instance
+## Step 2 - installing docker and run containers on AWS EC2 instance (docker)
 Connect to EC2 instance with VSCode and copy 'Cloud_version' folder to it:
 
 ![alt text](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/blob/main/images/Cloud/1_copy_to_ec2.jpg)
@@ -93,7 +96,7 @@ Block name must be 'awscre':
 
 ![alt text](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/blob/main/images/Cloud/7_prefect_aws_block.jpg)
 
-## Step 3 - run prefect flows to download datasets from source, transform it with spark, upload into a S3, and from S3 to RedShift (prefect + python)
+## Step 3,4,5 and 6 - run prefect flows to download datasets from source, transform it with spark, upload into a S3, and from S3 to RedShift (prefect, python, spark)
 Go to http://localhost:4200/deployments click quick run on MVC_flow and set parameters for downloading and processing data:
 ![alt text](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/blob/main/images/Cloud/8_prefect_run.jpg)
 ![alt text](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/blob/main/images/Cloud/9_C_prefect_run.jpg)
@@ -139,7 +142,7 @@ Make sure via RedShift QueryTool, that all needed data was ingested in database(
 ![alt text](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/blob/main/images/Cloud/14_qcheck_redshift_prefect_run.jpg)
 
 
-## Step 4 - Transformation, modeling and generalization data in the RedShift (dbt)
+## Step 7 - Transformation, modeling and generalization data in the RedShift (dbt)
 
 Add info(host and password) to profiles.yml file(in 3_dbt folder).
 Host u can check on AWS Redshift Workgroup configuration(endpoint):
@@ -154,7 +157,7 @@ Check new generalized tables via RedShift QueryTool. They should be in the "MVC_
 
 ![alt text](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/blob/main/images/Cloud/17_dbt_run_redshift_prefect_run.jpg)
 
-## Step 5 - Visualization of transformed and generalized data (metabase)
+## Step 8 and 9 - Visualization of transformed and generalized data (metabase)
 
 Open Metabase  http://localhost:3000, set login, password for metabase and setup connection to RedShift (set database name: "MVC_db"):
 
