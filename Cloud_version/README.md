@@ -44,7 +44,7 @@ terraform apply
 Check created AWS infrastructure - terraform must create EC2 instance, s3 bucket, RedShift serverless cluster and all necessary connections(subnets, security groups, internet gateways, etc)
 
 ## Step 2 - installing docker and run containers on AWS EC2 instance
-Connect to EC2 instance and copy 'Cloud_version' folder:
+Connect to EC2 instance with VSCode and copy 'Cloud_version' folder to it:
 
 ![alt text](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/blob/main/images/Cloud/1_copy_to_ec2.jpg)
 
@@ -92,3 +92,38 @@ Go to localhost:4200 and set the block with AWS credentials:
 Block name must be 'awscre':
 
 ![alt text](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/blob/main/images/Cloud/7_prefect_aws_block.jpg)
+
+## Step 3 - run prefect flows to download datasets from source, transform it with spark, upload into a S3, and from S3 to RedShift (prefect + python)
+Go to http://localhost:4200/deployments click quick run on MVC_flow and set parameters for downloading and processing data:
+![alt text](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/blob/main/images/Cloud/8_prefect_run.jpg)
+![alt text](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/blob/main/images/Cloud/9_C_prefect_run.jpg)
+
+Select datatype for download:
+  * "C" for Motor Vehicle Collisions - Crashes
+  * "V" for Motor Vehicle Collisions - Vehicles
+  * "P" for Motor Vehicle Collisions - Person 
+ 
+Select years for partitioning and upload into database(separate table for each selected year) and save it. Years presented in the dataset:
+```
+[2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023]
+```
+
+Data processing will start after uploading the CSV file. If the csv file was not completely downloaded, select data_type like "C reload"(example for "C" data type) and try again. It will start downloading the csv file with selected data type again.
+
+Go to http://localhost:4200/flow-runs and check logs of started flow. If everything is done correctly, information about the processed data should appear in the logs.
+
+Spark reads the CSV file, selects the desired data, and writes it to the parquet file:
+
+![alt text](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/blob/main/images/Cloud/10_C_parq_prefect_run.jpg)
+
+Parquet files uploading int S3 bucket:
+
+![alt text](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/blob/main/images/Cloud/11_C_s3_prefect_run.jpg)
+
+![alt text](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/blob/main/images/Cloud/12_C_s3_prefect_run.jpg)
+
+Creation tables into RedShift and insert data from S3 parquet files:
+
+![alt text](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/blob/main/images/Cloud/13_C_redshift_prefect_run.jpg)
+
+
