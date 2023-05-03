@@ -116,7 +116,7 @@ Spark reads the CSV file, selects the desired data, and writes it to the parquet
 
 ![alt text](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/blob/main/images/Cloud/10_C_parq_prefect_run.jpg)
 
-Parquet files uploading int S3 bucket:
+Parquet files uploading into S3 bucket:
 
 ![alt text](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/blob/main/images/Cloud/11_C_s3_prefect_run.jpg)
 
@@ -126,4 +126,61 @@ Creation tables into RedShift and insert data from S3 parquet files:
 
 ![alt text](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/blob/main/images/Cloud/13_C_redshift_prefect_run.jpg)
 
+After complete dataprocessing for all 3 datasets("C", "V" and "P"), set "check" for data_type and run this flow. 
 
+![alt text](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/blob/main/images/Cloud/14_pref_check_redshift_prefect_run.jpg)
+
+The data report should look like this:
+
+![alt text](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/blob/main/images/Cloud/14_pref_res_check_redshift_prefect_run.jpg)
+
+Make sure via RedShift QueryTool, that all needed data was ingested in database(tables must be in "public" schema):
+
+![alt text](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/blob/main/images/Cloud/14_qcheck_redshift_prefect_run.jpg)
+
+
+## Step 4 - Transformation, modeling and generalization data in the RedShift (dbt)
+
+Add info(host and password) to profiles.yml file(in 3_dbt folder).
+Host u can check on AWS Redshift Workgroup configuration(endpoint):
+
+![alt text](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/blob/main/images/Cloud/15_dbt_redshift_prefect_run.jpg)
+
+Go to http://localhost:4200/deployments click quick run on MVC_flow and set "dbt" as data_type for run dbt processing:
+
+![alt text](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/blob/main/images/Cloud/16_dbt_run_redshift_prefect_run.jpg)
+
+Check new generalized tables via RedShift QueryTool. They should be in the "MVC_summarize" schema.
+
+![alt text](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/blob/main/images/Cloud/17_dbt_run_redshift_prefect_run.jpg)
+
+## Step 5 - Visualization of transformed and generalized data (metabase)
+
+Open Metabase  http://localhost:3000, set login, password for metabase and setup connection to RedShift (set database name: "MVC_db"):
+
+![alt text](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/blob/main/images/Cloud/18_metabase_reg_db.jpg)
+
+Check the data in MVC_db database:
+
+![alt text](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/blob/main/images/Cloud/19_metabase_check_db.jpg)
+
+![alt text](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/blob/main/images/Cloud/20_metabase_check_db.jpg)
+
+![alt text](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/blob/main/images/Cloud/21_metabase_check_db.jpg)
+
+Go to http://localhost:4200/deployments click quick run on metabase_flow and set login and password from metabase:
+![alt text](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/blob/main/images/Cloud/22_metabase_prefect_ru.jpg)
+
+![alt text](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/blob/main/images/Cloud/23_metabase_prefect_ru.jpg)
+
+The flow output should look like this:
+
+![alt text](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/blob/main/images/Cloud/24_metabase_prefect_ru.jpg)
+
+Go to metabase http://localhost:3000/ and check MVC_collection:
+![alt text](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/blob/main/images/Cloud/25_metabase.jpg)
+
+Checkout MVC_dashboard:
+![alt text](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/blob/main/images/Cloud/26_metabase_dashboard_1.jpg)
+![alt text](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/blob/main/images/Cloud/26_metabase_dashboard_2.jpg)
+![alt text](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/blob/main/images/Cloud/27_metabase_dashboard_3.jpg)
