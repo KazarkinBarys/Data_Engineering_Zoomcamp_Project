@@ -4,15 +4,15 @@ This guide contains the instructions you need to follow to reproduce the project
 
 [Step 0](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/tree/main/Cloud_version#step-0---preparation) - Preparation
 
-[Step 1](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/tree/main/Cloud_version#step-1---creating-cloud-infrastructure-on-aws---ec2-s3-bucket-redshift-serverless-clusterterraform) - creating cloud infrastructure on AWS - EC2, S3 bucket, RedShift serverless cluster (terraform)
+[Step 1](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/tree/main/Cloud_version#step-1---creating-cloud-infrastructure-on-aws---ec2-s3-bucket-redshift-serverless-cluster-terraform) - creating cloud infrastructure on AWS - EC2, S3 bucket, RedShift serverless cluster (terraform)
 
-[Step 2](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/tree/main/Cloud_version#step-2---installing-docker-and-run-containers-on-aws-ec2-instance) - installing docker and run containers on AWS EC2 instance (docker)
+[Step 2](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/tree/main/Cloud_version#step-2---installing-docker-and-run-containers-on-aws-ec2-instance-docker) - installing docker and run containers on AWS EC2 instance (docker)
 
-[Step 3,4,5 and 6](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/blob/main/Local_version/README.md#step-4---transformation-modeling-and-generalization-of-data-into-a-database-dbt) - run prefect flows to download datasets from source, transform it with spark, upload into a S3, and from S3 to RedShift (prefect, python, spark)
+[Step 3,4,5 and 6](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/tree/main/Cloud_version#step-345-and-6---run-prefect-flows-to-download-datasets-from-source-transform-it-with-spark-upload-into-a-s3-and-from-s3-to-redshift-prefect-python-spark) - run prefect flows to download datasets from source, transform it with spark, upload into a S3, and from S3 to RedShift (prefect, python, spark)
 
-[Step 7](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/blob/main/Local_version/README.md#step-5---visualization-of-transformed-and-generalized-data-metabase) - Transformation, modeling and generalization data in the RedShift (dbt)
+[Step 7](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/tree/main/Cloud_version#step-7---transformation-modeling-and-generalization-data-in-the-redshift-dbt) - Transformation, modeling and generalization data in the RedShift (dbt)
 
-[Step 8 and 9](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/blob/main/Local_version/README.md#step-5---visualization-of-transformed-and-generalized-data-metabase) - Visualization of transformed and generalized data (metabase)
+[Step 8 and 9](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/tree/main/Cloud_version#step-8-and-9---visualization-of-transformed-and-generalized-data-metabase) - Visualization of transformed and generalized data (metabase)
 
 
 ## Project architecture
@@ -186,4 +186,4 @@ Go to metabase http://localhost:3000/ and check MVC_collection:
 Checkout MVC_dashboard:
 ![alt text](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/blob/main/images/Cloud/26_metabase_dashboard_1.jpg)
 ![alt text](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/blob/main/images/Cloud/26_metabase_dashboard_2.jpg)
-![alt text](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/blob/main/images/Cloud/27_metabase_dashboard_3.jpg)
+
