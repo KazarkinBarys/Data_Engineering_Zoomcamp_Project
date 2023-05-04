@@ -2,7 +2,9 @@
 
 ## Overview
 
-This project was executed as a part of the [Data Engineering Zoomcamp](https://github.com/DataTalksClub/data-engineering-zoomcamp) course held by [DataTalks.Club](https://datatalks.club/). The goal of this project is to apply everything we learned in this course and build an end-to-end data pipeline. The project is implemented in two versions: local and cloud.
+This project was executed as a part of the [Data Engineering Zoomcamp](https://github.com/DataTalksClub/data-engineering-zoomcamp) course held by [DataTalks.Club](https://datatalks.club/). 
+
+The end goal of this project is to apply everything we learned in this course and build an end-to-end data pipeline. The project is implemented in two versions: local and cloud.
 
 The goals of the project are:
 
