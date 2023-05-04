@@ -180,6 +180,12 @@ The flow output should look like this:
 
 ![alt text](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/blob/main/images/Cloud/24_metabase_prefect_ru.jpg)
 
+If u have troubles with connection - check metabase container ip with bash command:
+```
+docker inspect   -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' [CONTAINER ID]
+```
+And add this ip adress as 3 value to login and password in metabase_flow setup.
+
 Go to metabase http://localhost:3000/ and check MVC_collection:
 ![alt text](https://github.com/KazarkinBarys/Data_Engineering_Zoomcamp_Project/blob/main/images/Cloud/25_metabase.jpg)
 
